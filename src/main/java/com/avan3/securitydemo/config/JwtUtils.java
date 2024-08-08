@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class JwtUtils {
 
-    private String jwtSigningKey = "secret";
+    private String jwtSigningKey = "7IItgfu8nurqKnTF7vsi1wDRn630wmt1IXHZqTG4koMCT9OeyGsPGQ44NYv6uGZlGFt20IDAdi6qNo1uCSziQZC7rcWWNrL2QpTSNt5iCsVH8h1BfzivOJGeaBkHsBs2fZPpjTyYiKLyPwZ7uMkM5NVfXCDOa9jRRQUpB7HZnSp3es7nIOHOMOPOqbU56T2pcM2UrwSe3ltgexI4yoRuTqpZ9N82zqxJ4InetG2DgrIC4YojQS8PQzCMtneHU8oN";
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
