@@ -2,18 +2,18 @@ package com.avan3.securitydemo.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class TestController {
-    @GetMapping("/public")
+    @GetMapping("/admin")
     public ResponseEntity<String> getPublic() {
-        return new ResponseEntity<>("Hello Public", HttpStatus.OK);
+        return new ResponseEntity<>("Hello Admin", HttpStatus.OK);
     }
 
-    @GetMapping("/private")
+    @GetMapping("/user")
     public ResponseEntity<String> getPrivate() {
-        return new ResponseEntity<>("Hello Private", HttpStatus.OK);
+        return new ResponseEntity<>("Hello User", HttpStatus.OK);
     }
 }
