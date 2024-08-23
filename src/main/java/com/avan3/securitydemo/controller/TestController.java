@@ -11,9 +11,4 @@ public class TestController {
     public ResponseEntity<String> getPublic() {
         return new ResponseEntity<>("Hello Admin", HttpStatus.OK);
     }
-
-    @GetMapping("/user")
-    public ResponseEntity<String> getPrivate() {
-        return new ResponseEntity<>("Hello User", HttpStatus.OK);
-    }
 }
