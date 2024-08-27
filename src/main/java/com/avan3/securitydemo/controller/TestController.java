@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class TestController {
+
+    @GetMapping("/")
+    public ResponseEntity<String> getEntry() { return new ResponseEntity<>("Welcome to Home!", HttpStatus.OK); }
     @GetMapping("/admin")
     public ResponseEntity<String> getPublic() {
         return new ResponseEntity<>("Hello Admin", HttpStatus.OK);
