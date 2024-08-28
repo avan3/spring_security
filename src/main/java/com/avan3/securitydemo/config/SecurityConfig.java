@@ -47,11 +47,23 @@ public class SecurityConfig {
         CsrfTokenRequestAttributeHandler requestHandler = new CsrfTokenRequestAttributeHandler();
         // set the name of the attribute the CsrfToken will be populated on
         requestHandler.setCsrfRequestAttributeName("_csrf");
-        http.csrf((csrf) -> csrf
-                        .csrfTokenRepository(tokenRepository)
-                        .csrfTokenRequestHandler(requestHandler)
-                )
-                .addFilterAfter(new CsrfCookieFilter(), BasicAuthenticationFilter.class)
+//        http.csrf((csrf) -> csrf
+//                        .csrfTokenRepository(tokenRepository)
+//                        .csrfTokenRequestHandler(requestHandler)
+//                )
+//                .addFilterAfter(new CsrfCookieFilter(), BasicAuthenticationFilter.class)
+//                .authorizeHttpRequests((authorize) -> authorize
+//                        .requestMatchers(new AntPathRequestMatcher("/login")).permitAll()
+//                        .requestMatchers(new AntPathRequestMatcher("/**/auth/**")).permitAll()
+//                        .requestMatchers(new AntPathRequestMatcher("/**/admin")).hasRole("ADMIN")
+//                        .requestMatchers(new AntPathRequestMatcher("/**/user")).hasAnyRole("ADMIN", "USER")
+//                        .anyRequest().authenticated()
+//                )
+//                .authenticationProvider(authenticationProvider())
+//                .httpBasic(Customizer.withDefaults())
+//                .formLogin(Customizer.withDefaults());
+
+        http.csrf((csrf) -> csrf.disable())
                 .authorizeHttpRequests((authorize) -> authorize
                         .requestMatchers(new AntPathRequestMatcher("/**/auth/**")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/**/admin")).hasRole("ADMIN")
