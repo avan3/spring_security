@@ -6,6 +6,7 @@ import com.avan3.securitydemo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +17,8 @@ public class UserDetailsService implements org.springframework.security.core.use
 
     @Autowired
     private UserRepository userRepository;
+
+    private final BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(10);
 
     public List<User> loadAllUsers() {
         return userRepository.findAll();
@@ -30,5 +33,10 @@ public class UserDetailsService implements org.springframework.security.core.use
             User user = userOptional.get();
             return new UserPrincipal(user);
         }
+    }
+
+    public User saveUser(User user) {
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        return userRepository.save(user);
     }
 }
